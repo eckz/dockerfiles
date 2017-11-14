@@ -1,4 +1,4 @@
-FROM jupyter/scipy-notebook:latest
+FROM jupyter/scipy-notebook
 
 USER root
 
@@ -13,7 +13,8 @@ RUN apt-get update && \
 
 USER $NB_USER
 
-RUN pip install octave_kernel
+RUN pip install octave_kernel  && \
+    rm -rf .cache/pip
 
 USER root
 
